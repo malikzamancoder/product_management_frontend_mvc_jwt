@@ -11,7 +11,7 @@ const Signup = () => {
     e.preventDefault();
     try {
       await axios.post(
-        "https://inspiring-recreation-production-0f3d.up.railway.app",
+        "https://inspiring-recreation-production-0f3d.up.railway.app/user/createuser",
         {
           username: username,
           password: password,
