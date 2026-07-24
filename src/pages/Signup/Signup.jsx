@@ -5,54 +5,270 @@ import { useNavigate } from "react-router";
 const Signup = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+
   const navigate = useNavigate();
+
 
   const handleSignup = async (e) => {
     e.preventDefault();
+
     try {
+
       await axios.post(
         "https://inspiring-recreation-production-0f3d.up.railway.app/user/createuser",
         {
-          username: username,
-          password: password,
-        },
+          username,
+          password,
+        }
       );
+
+
       alert("User created successfully!");
+
       navigate("/login");
+
+
     } catch (error) {
+
       console.error("Signup error:", error);
-      alert("Failed to create user. Please try again.");
+
+      alert(
+        error.response?.data?.message ||
+        "Failed to create user. Please try again."
+      );
+
     }
   };
 
+
+
   return (
-    <div>
-      <h2>Signup</h2>
-      <form onSubmit={handleSignup}>
-        <div>
-          <label htmlFor="username">Username:</label>
-          <input
-            type="text"
-            id="username"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-            required
-          />
+
+    <div className="
+      min-h-screen
+      flex
+      items-center
+      justify-center
+      bg-gradient-to-br
+      from-slate-900
+      via-blue-900
+      to-slate-800
+      px-4
+    ">
+
+
+      <div className="
+        w-full
+        max-w-md
+        bg-white
+        rounded-3xl
+        shadow-2xl
+        p-8
+      ">
+
+
+        {/* Heading */}
+
+        <div className="text-center mb-8">
+
+          <h1 className="
+            text-3xl
+            font-bold
+            text-gray-800
+          ">
+            Create Account 🚀
+          </h1>
+
+
+          <p className="
+            text-gray-500
+            mt-2
+          ">
+            Register to start using our platform
+          </p>
+
+
         </div>
-        <div>
-          <label htmlFor="password">Password:</label>
-          <input
-            type="password"
-            id="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-        </div>
-        <button type="submit">Signup</button>
-      </form>
+
+
+
+        <form 
+          onSubmit={handleSignup}
+          className="space-y-5"
+        >
+
+
+
+          {/* Username */}
+
+          <div>
+
+            <label className="
+              block
+              text-sm
+              font-semibold
+              text-gray-700
+              mb-2
+            ">
+              Username
+            </label>
+
+
+            <input
+
+              type="text"
+
+              value={username}
+
+              onChange={(e)=>setUsername(e.target.value)}
+
+              placeholder="Enter your username"
+
+              className="
+                w-full
+                px-4
+                py-3
+                border
+                border-gray-300
+                rounded-xl
+                outline-none
+                focus:ring-2
+                focus:ring-blue-500
+                transition
+              "
+
+              required
+
+            />
+
+
+          </div>
+
+
+
+
+
+          {/* Password */}
+
+          <div>
+
+            <label className="
+              block
+              text-sm
+              font-semibold
+              text-gray-700
+              mb-2
+            ">
+              Password
+            </label>
+
+
+            <input
+
+              type="password"
+
+              value={password}
+
+              onChange={(e)=>setPassword(e.target.value)}
+
+              placeholder="Enter your password"
+
+              className="
+                w-full
+                px-4
+                py-3
+                border
+                border-gray-300
+                rounded-xl
+                outline-none
+                focus:ring-2
+                focus:ring-blue-500
+                transition
+              "
+
+              required
+
+            />
+
+
+          </div>
+
+
+
+
+
+          {/* Button */}
+
+          <button
+
+            type="submit"
+
+            className="
+              w-full
+              py-3
+              bg-blue-600
+              text-white
+              font-semibold
+              rounded-xl
+              hover:bg-blue-700
+              transition
+              shadow-lg
+            "
+
+          >
+
+            Create Account
+
+          </button>
+
+
+
+
+        </form>
+
+
+
+
+        <p className="
+          text-center
+          text-gray-500
+          mt-6
+          text-sm
+        ">
+
+          Already have an account?
+
+
+          <span
+
+            onClick={()=>navigate("/login")}
+
+            className="
+              text-blue-600
+              font-semibold
+              cursor-pointer
+              ml-1
+              hover:underline
+            "
+
+          >
+
+            Login
+
+          </span>
+
+
+        </p>
+
+
+
+      </div>
+
+
     </div>
+
   );
 };
+
 
 export default Signup;
