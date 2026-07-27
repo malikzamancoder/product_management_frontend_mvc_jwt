@@ -18,7 +18,7 @@ const Products = () => {
 
 
   const API_URL =
-    "https://inspiring-recreation-production-0f3d.up.railway.app";
+    "http://localhost:5050";
 
 
   // Fetch Products

@@ -15,7 +15,7 @@ const Signup = () => {
     try {
 
       await axios.post(
-        "https://inspiring-recreation-production-0f3d.up.railway.app/user/createuser",
+        "http://localhost:5050/user/createuser",
         {
           username,
           password,

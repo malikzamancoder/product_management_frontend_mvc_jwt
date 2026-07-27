@@ -36,7 +36,7 @@ function App() {
           textAlign: "center",
           cursor: "pointer",
         }}
-        onClick={() => handleNavigate("/signup")}
+        
       >
         <h2>Signup</h2>
         <p>New here? Click here to create an account.</p>
